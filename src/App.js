@@ -6,19 +6,22 @@ import Login from "./components/pages/Login";
 import Quiz from "./components/pages/Quiz";
 import Result from "./components/pages/Result";
 import Signup from "./components/pages/Signup";
+import { AuthProvider } from "./contexts/AuthContext";
 import "./styles/App.css";
 
 const App = () => {
   return (
-    <Layout>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/quiz" component={Quiz} />
-        <Route path="/result" component={Result} />
-      </Switch>
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/quiz" component={Quiz} />
+          <Route path="/result" component={Result} />
+        </Switch>
+      </Layout>
+    </AuthProvider>
   );
 };
 

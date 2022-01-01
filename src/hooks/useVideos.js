@@ -24,7 +24,7 @@ const useVideos = (page) => {
         videosRef,
         orderByKey(),
         startAt("" + page),
-        limitToFirst(6)
+        limitToFirst(9)
       );
 
       try {

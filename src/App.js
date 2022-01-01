@@ -19,7 +19,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <PublicRoute path="/login" component={Login} />
           <PublicRoute path="/signup" component={Signup} />
-          <PrivateRoute path="/quiz" component={Quiz} />
+          <PrivateRoute path="/quiz/:id" component={Quiz} />
           <PrivateRoute path="/result" component={Result} />
         </Switch>
       </Layout>

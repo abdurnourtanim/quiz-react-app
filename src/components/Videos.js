@@ -15,13 +15,18 @@ const Videos = () => {
         <InfiniteScroll
           dataLength={videos.length}
           hasMore={hasMore}
+          loader={<h4>Loading...</h4>}
           next={() => setPage(page + 6)}
         >
-          {videos.map(({ title, youtubeID, noq }) => (
-            <Link to="/quiz" key={youtubeID}>
+          {videos.map(({ title, youtubeID, noq }) =>
+            noq > 0 ? (
+              <Link to={`/quiz/${youtubeID}`} key={youtubeID}>
+                <Video title={title} id={youtubeID} noq={noq} />
+              </Link>
+            ) : (
               <Video title={title} id={youtubeID} noq={noq} />
-            </Link>
-          ))}
+            )
+          )}
         </InfiniteScroll>
       )}
 

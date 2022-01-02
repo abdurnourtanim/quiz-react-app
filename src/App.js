@@ -20,7 +20,7 @@ const App = () => {
           <PublicRoute path="/login" component={Login} />
           <PublicRoute path="/signup" component={Signup} />
           <PrivateRoute path="/quiz/:id" component={Quiz} />
-          <PrivateRoute path="/result" component={Result} />
+          <PrivateRoute path="/result/:id" component={Result} />
         </Switch>
       </Layout>
     </AuthProvider>

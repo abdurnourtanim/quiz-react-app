@@ -1,13 +1,15 @@
 import React from "react";
 import classes from "../styles/Analysis.module.css";
-import Question from "./Question";
+import Questions from "./Questions";
 
-const Analysis = () => {
+const Analysis = ({ answers, score, noq }) => {
   return (
     <div className={classes.analysis}>
       <h1>Question Analysis</h1>
-      <h4>You answerd 5 out of 10 questions correctly</h4>
-      <Question />
+      <h4>
+        You answerd {score} out of {noq * 5} questions correctly
+      </h4>
+      <Questions answers={answers} />
     </div>
   );
 };

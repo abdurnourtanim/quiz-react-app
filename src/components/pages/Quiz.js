@@ -107,7 +107,7 @@ const Quiz = () => {
             progress={percentage}
             submit={submit}
           />
-          <MiniPlayer />
+          <MiniPlayer videoID={id} title={qna[currentQuestion].title} />
         </>
       )}
     </>

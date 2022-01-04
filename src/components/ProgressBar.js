@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import classes from "../styles/ProgressBar.module.css";
 import Button from "./Button";
 
 const ProgressBar = ({ prev, next, submit, progress }) => {
+  const [tooltip, setTooltip] = useState(false);
+  const tooltipRef = useRef();
+
+  const toggleTooltip = () => {
+    if (!tooltip) {
+      setTooltip(true);
+      tooltipRef.current.style.left = `calc(${progress}% - 65px)`;
+      tooltipRef.current.style.display = "block";
+    } else {
+      setTooltip(false);
+      tooltipRef.current.style.display = "none";
+    }
+  };
+
   return (
     <div className={classes.progressBar}>
       <div className={classes.backButton} onClick={prev}>
         <span className="material-icons-outlined"> arrow_back </span>
       </div>
       <div className={classes.rangeArea}>
-        <div className={classes.tooltip}>{progress}% Complete!</div>
+        <div className={classes.tooltip} ref={tooltipRef}>
+          {progress}% Complete!
+        </div>
         <div className={classes.rangeBody}>
           <div
             className={classes.progress}
             style={{ width: `${progress}%` }}
+            onMouseOver={toggleTooltip}
+            onMouseOut={toggleTooltip}
           ></div>
         </div>
       </div>
